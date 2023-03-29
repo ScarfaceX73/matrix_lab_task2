@@ -16,13 +16,14 @@ let mainContract;
 const WalletCard = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [defaultAccount, setDefaultAccount] = useState(null);
-  const [userBalance, setUserBalance] = useState(null);
+  const [userBalance, setUserBalance] = useState(0);
   const [totalS, setTotalS] = useState(0);
+  const [totalToken, setTotalToken] = useState(0)
   const obj = [
     {
       id: 0,
       name: "My Total Token",
-      value: "34234 TKN"
+      value: `${totalToken} TKN`
     },
     {
       id: 1,
@@ -89,7 +90,9 @@ const WalletCard = () => {
       setTotalS(parseInt(totalSupply, 16));
 
       const myTotalToken = await mainContract?.balanceOf(accounts[0]);
-      console.log(parseInt(myTotalToken, 16));
+      console.log(parseInt(myTotalToken));
+
+      // getTransactionCount
     }
   };
 
